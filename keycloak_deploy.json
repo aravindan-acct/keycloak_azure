@@ -4,11 +4,16 @@
     "parameters": {"password": {
         "type": "securestring",
         "metadata": {
-            "description": "description"
+            "description": "User Password for ssh access"
         }
-    }},
+        },
+        "vmname": {"type": "string",
+        "metadata": {
+            "description": "name of the Linux system"
+        }}
+    },
     "variables": {
-        "vmname": "keycloak",
+        "vmname": "[parameters('vmname')]",
         "vmstorage": "[toLower(concat(variables('vmname'),'labstorage'))]",
         "vmnsg": "[concat(variables('vmname'),'-nsg')]",
         "vnet": "[concat(variables('vmname'),'-VirtualNetwork')]",
