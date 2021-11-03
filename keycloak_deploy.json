@@ -210,11 +210,11 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "[concat('artifactsLocation', '/scripts/customScript.sh', 'artifactsLocationSasToken')]"
+                        "https://raw.githubusercontent.com/aravindan-acct/keycloak_azure/main/scripts/customscript.sh"
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "sh customScript.sh"
+                    "commandToExecute": "nohup bash customscript.sh"
                 }
             }
         }
