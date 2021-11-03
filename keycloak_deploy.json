@@ -9,7 +9,7 @@
     }},
     "variables": {
         "vmname": "keycloak",
-        "vmstorage": "[toLower(concat(variables('vmname'),'storage'))]",
+        "vmstorage": "[toLower(concat(variables('vmname'),'labstorage'))]",
         "vmnsg": "[concat(variables('vmname'),'-nsg')]",
         "vnet": "[concat(variables('vmname'),'-VirtualNetwork')]",
         "keycloaksubnet": "[concat(variables('vnet'),'-Subnet')]",
