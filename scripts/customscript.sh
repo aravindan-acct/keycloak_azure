@@ -65,7 +65,7 @@ EOF
 
 cat > ca-csr.json <<EOF
 {
-  "CN": "keycloak",
+  "CN": "admin.cuda.local",
   "key": {
     "algo": "rsa",
     "size": 2048
@@ -91,9 +91,9 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 
 { 
 
-cat > admin-csr.json <<EOF
+cat > keycloak-csr.json <<EOF
 {
-  "CN": "admin",
+  "CN": "keycloak.cuda.local",
   "key": {
     "algo": "rsa",
     "size": 2048
@@ -116,14 +116,14 @@ cfssl gencert \
   -config=ca-config.json \
   -hostname=keycloak.cudanet.com \
   -profile=keycloak \
-  admin-csr.json | cfssljson -bare admin
+  keycloak-csr.json | cfssljson -bare keycloak
 
 }
 ls -l
 
-echo "moving admin certificates"
-sudo cp admin-key.pem /etc/nginx/cert.key
-sudo cp admin.pem /etc/nginx/cert.crt 
+echo "moving keycloak certificates"
+sudo cp keycloak-key.pem /etc/nginx/cert.key
+sudo cp keycloak.pem /etc/nginx/cert.crt 
 
 ls -l
 # NGINX Configuration
