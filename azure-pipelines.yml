@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'JWTValidationDeploy'
+    subscriptionId: '490510b5-6cc9-41de-95e9-44e31b0f3f36'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'wafpm_gartner_2022'
+    location: 'South Central US'
+    templateLocation: 'Linked artifact'
+    csmFile: 'https://raw.githubusercontent.com/aravindan-acct/keycloak_azure/main/keycloak_deploy.json'
+    csmParametersFile: 'https://raw.githubusercontent.com/aravindan-acct/keycloak_azure/main/keycloak_deploy.parameters.json'
+    deploymentMode: 'Incremental'
